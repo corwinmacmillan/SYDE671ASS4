@@ -50,7 +50,7 @@ class YourModel(tf.keras.Model):
         #
         # ====================================================================
 
-        self.architecture = [Conv2D(64, 3, strides=(4, 4), activation='relu', input_shape=(224, 224, 3)),
+        self.architecture = [Conv2D(64, 3, activation='relu', input_shape=(224, 224, 3)),
                              MaxPool2D((2, 2)),
                              Conv2D(128, 3, activation='relu'),
                              MaxPool2D(2, 2),
@@ -58,8 +58,8 @@ class YourModel(tf.keras.Model):
                              Conv2D(256, 3, activation='relu'),
                              MaxPool2D((2, 2)),
                              Flatten(),
-                             Dense(1024, activation='relu'),
-                             Dense(1024, activation='relu'),
+                             Dense(2048, activation='relu'),
+                             Dense(2048, activation='relu'),
                              Dropout(rate=0.2),
                              Dense(15, activation='softmax'),
                              Dropout(rate=0.2)]
