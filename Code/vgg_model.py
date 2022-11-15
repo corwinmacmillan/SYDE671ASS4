@@ -46,12 +46,14 @@ class VGGModel(tf.keras.Model):
         # TODO: Make all layers in self.vgg16 non-trainable. This will freeze the
         #       pretrained VGG16 weights into place so that only the classificaiton
         #       head is trained.
-
+        for layer in self.vgg16:
+            layer.trainable = False
 
         # TODO: Write a classification head for our 15-scene classification task.
         #       Hint: The layers Flatten and Dense are essential here.
 
-        self.head = []
+        self.head = [Flatten(),
+                     Dense(15, activation='softmax')]
 
         # ============================================================================
 
