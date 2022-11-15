@@ -100,10 +100,10 @@ def test(model, test_data):
 
 def main():
     """ Main function. """
-    task = 1
-    datasets = Datasets('../data/', task)
+    # task = 1
+    datasets = Datasets(ARGS.data, ARGS.task)
 
-    if task == 1:
+    if ARGS.task == '1':
         model = YourModel()
         model(tf.keras.Input(shape=(hp.img_size, hp.img_size, 3)))
         checkpoint_path = "./your_model_checkpoints/"
@@ -136,6 +136,6 @@ def main():
         train(model, datasets, checkpoint_path)
 
 # Make arguments global
-# ARGS = parse_args()
+ARGS = parse_args()
 
 main()
