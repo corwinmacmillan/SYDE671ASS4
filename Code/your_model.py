@@ -54,11 +54,30 @@ class YourModel(tf.keras.Model):
                              MaxPool2D((2, 2)),
                              Conv2D(128, 3, activation='relu'),
                              MaxPool2D(2, 2),
+
                              Conv2D(256, 3, activation='relu'),
                              Conv2D(256, 3, activation='relu'),
                              MaxPool2D((2, 2)),
+
+                             Conv2D(512, 3, activation='relu'),
+                             Conv2D(512, 3, activation='relu'),
+                             MaxPool2D((2, 2)),
+
+                            #  Conv2D(1024, 3, activation='relu'),
+                            #  Conv2D(1024, 3, activation='relu'),
+                            #  MaxPool2D((2, 2)),
+
+                            #  Conv2D(512, 3, activation='relu'),
+                            #  Conv2D(512, 3, activation='relu'),
+                            #  MaxPool2D((2, 2)),
+
+                             Conv2D(256, 3, activation='relu'),
+                             Conv2D(256, 3, activation='relu'),
+                             MaxPool2D((2, 2)),
+
                              Flatten(),
                              Dense(2048, activation='relu'),
+                             Dropout(rate=0.2),
                              Dense(2048, activation='relu'),
                              Dropout(rate=0.2),
                              Dense(15, activation='softmax'),

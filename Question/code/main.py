@@ -109,5 +109,5 @@ def main(argv):
         print ('nn+svm model training accuracy: {:.0%}'.format(accuracy))
 
 if __name__ == '__main__':
-    main(['', 'mnist', '', 'nn'])
+    main(sys.argv[1:])
 
