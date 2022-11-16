@@ -82,7 +82,7 @@ class ImageLabelingLogger(tf.keras.callbacks.Callback):
 
         figure_img = plot_to_image(fig)
 
-        file_writer_il = tf.summary.create_file_writer('vgg_logs/image_labels')
+        file_writer_il = tf.summary.create_file_writer('logs/image_labels')
 
         with file_writer_il.as_default():
             tf.summary.image("Image Label Predictions", figure_img, step=epoch_num)

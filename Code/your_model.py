@@ -65,26 +65,27 @@ class YourModel(tf.keras.Model):
 
                              Conv2D(512, 3, activation='relu'),
                              Conv2D(512, 3, activation='relu'),
-                             MaxPool2D((2, 2)),
-                            #  BatchNormalization(),
-
-                            #  Conv2D(1024, 3, activation='relu'),
-                            #  Conv2D(1024, 3, activation='relu'),
-                            #  MaxPool2D((2, 2)),
-
-                            #  Conv2D(512, 3, activation='relu'),
-                            #  Conv2D(512, 3, activation='relu'),
-                            #  MaxPool2D((2, 2)),
-
-                             Conv2D(256, 3, activation='relu'),
-                             Conv2D(256, 3, activation='relu'),
+                             Conv2D(512, 3, activation='relu'),
                              MaxPool2D((2, 2)),
                              BatchNormalization(),
 
+                            #  Conv2D(1024, 3, activation='relu'),
+                            #  Conv2D(1024, 3, activation='relu'),
+                            #  MaxPool2D((2, 2)),
+
+                            #  Conv2D(512, 3, activation='relu'),
+                            #  Conv2D(512, 3, activation='relu'),
+                            #  MaxPool2D((2, 2)),
+
+                             Conv2D(256, 3, activation='relu'),
+                             Conv2D(256, 3, activation='relu'),
+                             MaxPool2D((2, 2)),
+                            #  BatchNormalization(),
+
                              Flatten(),
-                             Dense(2048, activation='relu'),
+                             Dense(512, activation='relu'),
                              Dropout(rate=0.2),
-                             Dense(1024, activation='relu'),
+                             Dense(256, activation='relu'),
                              Dropout(rate=0.2),
                              Dense(15, activation='softmax')]
         # ====================================================================
