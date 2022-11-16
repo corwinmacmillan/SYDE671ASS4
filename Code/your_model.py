@@ -5,7 +5,7 @@ Project 4 - CNNs
 import tensorflow as tf
 import hyperparameters as hp
 from tensorflow.keras.layers import \
-        Conv2D, MaxPool2D, Dropout, Flatten, Dense
+        Conv2D, MaxPool2D, Dropout, Flatten, Dense, BatchNormalization
 
 class YourModel(tf.keras.Model):
     """ Your own neural network model. """
@@ -52,16 +52,21 @@ class YourModel(tf.keras.Model):
 
         self.architecture = [Conv2D(64, 3, activation='relu', input_shape=(224, 224, 3)),
                              MaxPool2D((2, 2)),
+                            #  BatchNormalization(),
+
                              Conv2D(128, 3, activation='relu'),
                              MaxPool2D(2, 2),
+                            #  BatchNormalization(),
 
                              Conv2D(256, 3, activation='relu'),
                              Conv2D(256, 3, activation='relu'),
                              MaxPool2D((2, 2)),
+                            #  BatchNormalization(),
 
                              Conv2D(512, 3, activation='relu'),
                              Conv2D(512, 3, activation='relu'),
                              MaxPool2D((2, 2)),
+                            #  BatchNormalization(),
 
                             #  Conv2D(1024, 3, activation='relu'),
                             #  Conv2D(1024, 3, activation='relu'),
@@ -74,15 +79,14 @@ class YourModel(tf.keras.Model):
                              Conv2D(256, 3, activation='relu'),
                              Conv2D(256, 3, activation='relu'),
                              MaxPool2D((2, 2)),
+                             BatchNormalization(),
 
                              Flatten(),
                              Dense(2048, activation='relu'),
                              Dropout(rate=0.2),
-                             Dense(2048, activation='relu'),
+                             Dense(1024, activation='relu'),
                              Dropout(rate=0.2),
-                             Dense(15, activation='softmax'),
-                             Dropout(rate=0.2)]
-
+                             Dense(15, activation='softmax')]
         # ====================================================================
 
     def call(self, img):

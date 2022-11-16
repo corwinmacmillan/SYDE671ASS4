@@ -4,7 +4,7 @@ Project 4 - CNNs
 
 import tensorflow as tf
 import hyperparameters as hp
-from tensorflow.keras.layers import Conv2D, MaxPool2D, Flatten, Dense
+from tensorflow.keras.layers import Conv2D, MaxPool2D, Flatten, Dense,Dropout
 
 class VGGModel(tf.keras.Model):
     def __init__(self):
@@ -51,9 +51,22 @@ class VGGModel(tf.keras.Model):
 
         # TODO: Write a classification head for our 15-scene classification task.
         #       Hint: The layers Flatten and Dense are essential here.
+        self.head = [
 
-        self.head = [Flatten(),
-                     Dense(15, activation='softmax')]
+             Conv2D(512, 3, padding="same", activation="relu"),
+             MaxPool2D((2,2)),
+             Conv2D(256, 3, padding="same", activation="relu"),
+             MaxPool2D((2,2)),
+            #  AvgPool2D(pool_size = 7, strides = 1),
+             Flatten(),
+             Dense (units = 1024, activation = 'relu'),
+             Dropout(rate=0.2),
+             Dense (units = 512, activation = 'relu'),
+             Dropout(rate=0.2),
+             Dense(units=15,activation='softmax')
+             ]
+             
+
 
         # ============================================================================
 

@@ -82,7 +82,7 @@ class ImageLabelingLogger(tf.keras.callbacks.Callback):
 
         figure_img = plot_to_image(fig)
 
-        file_writer_il = tf.summary.create_file_writer('logs/image_labels')
+        file_writer_il = tf.summary.create_file_writer('vgg_logs/image_labels')
 
         with file_writer_il.as_default():
             tf.summary.image("Image Label Predictions", figure_img, step=epoch_num)
@@ -122,7 +122,7 @@ class ConfusionMatrixLogger(tf.keras.callbacks.Callback):
         figure = self.plot_confusion_matrix(cm, class_names=self.datasets.classes)
         cm_image = plot_to_image(figure)
 
-        file_writer_cm = tf.summary.create_file_writer('logs/confusion_matrix')
+        file_writer_cm = tf.summary.create_file_writer('vgg_logs/confusion_matrix')
 
         with file_writer_cm.as_default():
             tf.summary.image("Confusion Matrix (on validation set)", cm_image, step=epoch)
